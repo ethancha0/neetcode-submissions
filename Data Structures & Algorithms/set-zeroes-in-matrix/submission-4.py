@@ -1,0 +1,39 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+
+        ROWS = len(matrix)
+        COLS = len(matrix[0])
+
+        rowZero = False
+
+        # set the first row/col as 0's
+        for r in range(ROWS):
+            for c in range(COLS):
+                if matrix[r][c] == 0:
+                    if r == 0: 
+                        rowZero = True #
+                    else:
+                        matrix[r][0] = 0
+                    matrix[0][c] = 0
+
+
+        
+        for r in range(1, ROWS):
+            for c in range(1, COLS):
+                if matrix[0][c] == 0 or matrix[r][0] == 0:
+                    matrix[r][c] = 0 
+
+        # handle first column
+        if matrix[0][0] == 0:
+            for r in range(ROWS):
+                matrix[r][0] = 0
+
+        # handle first row 
+        if rowZero: 
+            for c in range(COLS):
+                matrix[0][c] = 0
+        
+
+
+        
+        
